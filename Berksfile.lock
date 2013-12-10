@@ -1,0 +1,54 @@
+{
+  "sources": {
+    "apt": {
+      "locked_version": "1.9.0"
+    },
+    "node": {
+      "locked_version": "1.0.1"
+    },
+    "rvm": {
+      "locked_version": "0.9.1",
+      "git": "https://github.com/fnichol/chef-rvm",
+      "ref": "0cd320911c1e568cbf2eeac895a5ef06e5821589"
+    },
+    "redis": {
+      "locked_version": "3.0.4"
+    },
+    "git": {
+      "locked_version": "2.7.0"
+    },
+    "dmg": {
+      "locked_version": "2.0.8"
+    },
+    "build-essential": {
+      "locked_version": "1.4.2"
+    },
+    "yum": {
+      "locked_version": "2.4.4"
+    },
+    "windows": {
+      "locked_version": "1.11.0"
+    },
+    "chef_handler": {
+      "locked_version": "1.1.4"
+    },
+    "runit": {
+      "locked_version": "1.4.0"
+    },
+    "java": {
+      "locked_version": "1.15.4"
+    },
+    "aws": {
+      "locked_version": "1.0.0"
+    },
+    "chef_gem": {
+      "locked_version": "0.1.0"
+    },
+    "install_from": {
+      "locked_version": "3.0.4"
+    },
+    "metachef": {
+      "locked_version": "3.0.4"
+    }
+  }
+}
