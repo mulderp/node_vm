@@ -7,6 +7,7 @@ VAGRANTFILE_API_VERSION = "2"
 
 Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   config.vm.box = "ubuntu-12"
+  config.omnibus.chef_version = :latest
   config.berkshelf.enabled = true
 
   # config.vm.box_url = "http://domain.com/path/to/above.box"
@@ -50,21 +51,28 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   #   vb.customize ["modifyvm", :id, "--memory", "1024"]
   # end
 
+
   config.vm.provision :chef_solo do |chef|
     chef.cookbooks_path = "./cookbooks"
     #chef.roles_path = "../my-recipes/roles"
     #chef.data_bags_path = "../my-recipes/data_bags"
-    chef.add_recipe "apt"
-    chef.add_recipe "rvm"
-    chef.add_recipe "redis"
+
+    chef.add_recipe "runit"
+    chef.add_recipe "rvm::system"
+    chef.add_recipe "rvm::vagrant"
+    chef.add_recipe "redis::install_from_package"
+    chef.add_recipe "redis::client"
+    chef.add_recipe "movie_repos::default"
     chef.add_recipe "node"
+
     # chef.add_role "web"
   
     # You may also specify custom JSON attributes:
     chef.json = { 
-      :rvm => {
-         :rubies => ["2.0.0-p0"],
-         :default_ruby => "2.0.0-p0"
+      'rvm' => {
+         'rubies' => ["2.0.0-p353"],
+         'default_ruby' => "2.0.0-p353",
+         :vagrant => { :system_chef_solo => "/opt/chef/bin/chef-solo" }
       }
     }
 
