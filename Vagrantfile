@@ -18,7 +18,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   config.vm.network :forwarded_port, guest: 8529, host: 5000
 
   config.vm.provision :shell, :inline => "/usr/bin/apt-get update --fix-missing"
-  config.vm.provision :shell, :inline => "sudo apt-get install -y curl; curl -L https://www.opscode.com/chef/install.sh | sudo bash"
+  # config.vm.provision :shell, :inline => "sudo apt-get install -y curl; curl -L https://www.opscode.com/chef/install.sh | sudo bash"
 
   # Create a private network, which allows host-only access to the machine
   # using a specific IP.
@@ -62,8 +62,8 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
     chef.add_recipe "rvm::vagrant"
     chef.add_recipe "redis::install_from_package"
     chef.add_recipe "redis::client"
-    chef.add_recipe "movie_repos::default"
     chef.add_recipe "node"
+    # chef.add_recipe "movie_repos::default"
 
     # chef.add_role "web"
   
